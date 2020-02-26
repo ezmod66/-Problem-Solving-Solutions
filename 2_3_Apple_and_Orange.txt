@@ -1,0 +1,92 @@
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Solution
+{
+
+    //s = starting point of sams house
+    //t = end point of sams house
+    //a =  apple tree point
+    //b = orange tree point
+    //apples = distance apples fall from the apple tree
+    //oranges = distance apples fall from the orange tree
+    static void countApplesAndOranges(int s, int t, int a, int b, int[] apples, int[] oranges)
+    {
+        int countApplesHitting = 0;
+        int countOrangesHitting = 0;
+
+        //apples hitting house
+        for (int i = 0; i < apples.Length; i++)
+        {
+            int appPosition = a + apples[i];
+
+            if (appPosition >= s && appPosition <= t)
+            {
+                ++countApplesHitting;
+            }
+        }
+
+        for (int x = 0; x < oranges.Length; x++)
+        {
+            int orPosition = b + oranges[x];
+
+            if (orPosition >= s && orPosition <= t)
+            {
+                //int i = 10;
+                //int x = ++i;
+                //then x will be 11.
+
+                //But if you have:
+
+                //int i = 10;
+                //int x = i++;
+                //then x will be 10.
+
+                ++countOrangesHitting;
+            }
+        }
+
+        Console.WriteLine(countApplesHitting);
+        Console.WriteLine(countOrangesHitting);
+
+    }
+
+    static void Main(string[] args)
+    {
+        string[] st = Console.ReadLine().Split(' ');
+
+        int s = Convert.ToInt32(st[0]);
+
+        int t = Convert.ToInt32(st[1]);
+
+        string[] ab = Console.ReadLine().Split(' ');
+
+        int a = Convert.ToInt32(ab[0]);
+
+        int b = Convert.ToInt32(ab[1]);
+
+        string[] mn = Console.ReadLine().Split(' ');
+
+        int m = Convert.ToInt32(mn[0]);
+
+        int n = Convert.ToInt32(mn[1]);
+
+        int[] apples = Array.ConvertAll(Console.ReadLine().Split(' '), applesTemp => Convert.ToInt32(applesTemp))
+        ;
+
+        int[] oranges = Array.ConvertAll(Console.ReadLine().Split(' '), orangesTemp => Convert.ToInt32(orangesTemp))
+        ;
+        countApplesAndOranges(s, t, a, b, apples, oranges);
+    }
+}
