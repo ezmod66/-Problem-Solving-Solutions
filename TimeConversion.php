@@ -16,7 +16,7 @@ timeConversion($s);
 
 function timeConversion($s) {
     // Write your code here
-    //date format oh hours min seconds, convert to time from string.
+    
     $time_in_24_hours = date("H:i:s", strtotime($s));
 
     echo $time_in_24_hours;
